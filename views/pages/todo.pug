@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  .container
+    h1 ToDo List
+    p Welcome to the Todo app by <a(href='#')>@KV-Disco</a>. Please enjoy.
+    .row
+      button.col-xs-1.btn.btn-md.btn-success all done
+      form.col-xs-6(action="toDoRequest", method="POST")
+        .input-group
+          input.form-control(name='todo', placeholder='Add task...', autofocus)
+          span.input-group-btn
+            button.btn.btn-default Add!
+    ol
+      each toDo, i in toDoList
+        .col-xs-11.row
+          button.done.col-xs-1.add.btn-xs.btn.btn-success(data-id=toDo.id) done
+          li.col-xs-7= toDo.task
+            p= toDo.time
+          button.delete.col-xs-1.remove.btn-xs.btn.btn-danger(data-id=toDo.id) delete
+
